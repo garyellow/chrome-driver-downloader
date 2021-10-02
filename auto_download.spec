@@ -4,7 +4,7 @@
 block_cipher = None
 
 
-a = Analysis(['download.py'],
+a = Analysis(['auto_download.py'],
              pathex=['C:\\Coding\\Python\\code\\chrome_driver'],
              binaries=[],
              datas=[],
@@ -26,7 +26,7 @@ exe = EXE(pyz,
           a.zipfiles,
           a.datas,  
           [],
-          name='download',
+          name='auto_download',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
