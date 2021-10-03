@@ -2,9 +2,8 @@ import logging
 import os
 import zipfile
 
-import requests
-
 import file_version
+import requests
 
 CHROME_DRIVER_BASE_URL = "https://chromedriver.storage.googleapis.com"
 CHROME_DRIVER_FOLDER = r"C:\temp\chrome"
