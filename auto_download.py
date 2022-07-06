@@ -2,8 +2,9 @@ import logging
 import os
 import zipfile
 
-import file_version
 import requests
+
+import file_version
 
 CHROME_DRIVER_BASE_URL = "https://chromedriver.storage.googleapis.com"
 CHROME_DRIVER_FOLDER = r"C:\temp\chrome"
@@ -20,20 +21,20 @@ def get_chrome_driver_major_version():
 
 
 def get_latest_driver_version(browser_ver):
-    latest_api = "{}/LATEST_RELEASE_{}".format(
-        CHROME_DRIVER_BASE_URL, browser_ver)
+    latest_api = "{}/LATEST_RELEASE_{}".format(CHROME_DRIVER_BASE_URL, browser_ver)
     resp = requests.get(latest_api)
     lastest_driver_version = resp.text.strip()
     return lastest_driver_version
 
 
 def download_driver(driver_ver, dest_folder):
-    download_api = "{}/{}/chromedriver_win32.zip".format(
-        CHROME_DRIVER_BASE_URL, driver_ver)
+    download_api = "{}/{}/chromedriver_win32.zip".format(CHROME_DRIVER_BASE_URL, driver_ver)
     dest_path = os.path.join(dest_folder, os.path.basename(download_api))
     resp = requests.get(download_api, stream=True, timeout=300)
 
     if resp.status_code == 200:
+        if not os.path.isdir(dest_folder):
+            os.makedirs(dest_folder)
         with open(dest_path, "wb") as f:
             f.write(resp.content)
         logging.info("Download driver completed")
