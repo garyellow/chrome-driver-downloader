@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "chrome-driver-downloader"
+version = "0.1.0"
+description = "Download chrome_driver easily"
+authors = ["garyellow <gary20011110@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "chrome_driver_downloader"}]
+
+[tool.poetry.dependencies]
+python = "~3.11"
+requests = "^2.31.0"
+pywin32 = "^306"
+python-dotenv = "^1.0.0"
+
+[tool.poetry.group.dev.dependencies]
+pyinstaller = "^5.13.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
