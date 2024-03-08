@@ -7,7 +7,11 @@ from dotenv import load_dotenv
 from win32com import client as wincom_client
 
 load_dotenv()
-logging.basicConfig(format="%(asctime)s %(message)s", datefmt="%Y/%m/%d %I:%M:%S %p")
+logging.basicConfig(
+    format="%(asctime)s %(message)s",
+    datefmt="%Y/%m/%d %I:%M:%S %p",
+    level=logging.INFO,
+)
 logger = logging.getLogger(__name__)
 
 if os.getenv("CHROME_PATH") is None:
@@ -47,7 +51,7 @@ def get_chrome_driver_major_version():
 
 def get_latest_driver_version(browser_ver):
     latest_api = f"{CHROME_DRIVER_BASE_URL}/LATEST_RELEASE_{browser_ver}"
-    resp = requests.get(latest_api, timeout=0)
+    resp = requests.get(latest_api, timeout=10)
     lastest_driver_version = resp.text.strip()
     logger.info("Latest driver version: %s", lastest_driver_version)
     return lastest_driver_version
