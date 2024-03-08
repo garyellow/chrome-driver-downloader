@@ -8,13 +8,10 @@ readme = "README.md"
 packages = [{include = "chrome_driver_downloader"}]
 
 [tool.poetry.dependencies]
-python = "~3.11"
+python = "~3.12"
 requests = "^2.31.0"
 pywin32 = "^306"
-python-dotenv = "^1.0.0"
-
-[tool.poetry.group.dev.dependencies]
-pyinstaller = "^5.13.2"
+python-dotenv = "^1.0.1"
 
 [build-system]
 requires = ["poetry-core"]
